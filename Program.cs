@@ -16,6 +16,7 @@ builder.Services.AddSingleton<ILogger>(sp =>
 
 builder.Services.AddMemoryCache();
 builder.Services.AddHostedService<EEEUUHH.Services.MqttClientService>();
+builder.Services.AddHostedService<EEEUUHH.Services.ConditionCheckerService>();
 
 var app = builder.Build();
 

@@ -12,9 +12,9 @@ builder.Services.AddSingleton<ILogger>(sp =>
     sp.GetRequiredService<ILoggerFactory>().CreateLogger("Default"));
 
 builder.Services.AddMemoryCache();
-builder.Services.AddHostedService<EEEUUHH.Services.MqttClientService>();
-builder.Services.AddHostedService<EEEUUHH.Services.ConditionCheckerService>();
-builder.Services.AddHostedService<EEEUUHH.Services.ArduinoService>();
+builder.Services.AddHostedService<PiGrow.Services.MqttClientService>();
+builder.Services.AddHostedService<PiGrow.Services.ConditionCheckerService>();
+builder.Services.AddHostedService<PiGrow.Services.ArduinoService>();
 
 var app = builder.Build();
 

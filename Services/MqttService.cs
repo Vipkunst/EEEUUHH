@@ -3,7 +3,7 @@ using MQTTnet;
 using System.Buffers;
 using System.Text;
 
-namespace EEEUUHH.Services
+namespace PiGrow.Services
 {
     public class MqttClientService : BackgroundService
     {

@@ -1,4 +1,4 @@
-﻿namespace EEEUUHH.Classes
+﻿namespace PiGrow.Classes
 {
     public class SensorData
     {

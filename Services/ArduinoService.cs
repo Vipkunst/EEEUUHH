@@ -1,6 +1,6 @@
 ﻿using System.IO.Ports;
 
-namespace EEEUUHH.Services
+namespace PiGrow.Services
 {
     public class ArduinoService : BackgroundService
     {

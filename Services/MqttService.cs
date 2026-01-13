@@ -45,7 +45,7 @@ namespace EEEUUHH.Services
 
                 // Cache the latest data
                 _cache.Set(data.Topic, data, TimeSpan.FromMinutes(10));
-                _logger.LogInformation(payload);
+                _logger.LogInformation($"{e.ApplicationMessage.Topic} {payload}");
             }
             catch (Exception ex)
             {

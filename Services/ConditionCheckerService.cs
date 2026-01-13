@@ -5,8 +5,9 @@ namespace EEEUUHH.Services
     public class ConditionCheckerService: BackgroundService
     {
         private readonly IMemoryCache _data;
+        private readonly ILogger<ConditionCheckerService> _logger;
 
-        public ConditionCheckerService(IMemoryCache data)
+        public ConditionCheckerService(IMemoryCache data, ILogger logger)
         {
             _data = data;
         }
@@ -15,6 +16,7 @@ namespace EEEUUHH.Services
 
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            // Main loop
             while (!stoppingToken.IsCancellationRequested)
             {
                 _data.TryGetValue("gas", out var gas);

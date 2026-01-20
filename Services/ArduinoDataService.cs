@@ -2,15 +2,15 @@
 
 namespace PiGrow.Services
 {
-    public class ArduinoService : BackgroundService
+    public class ArduinoDataService : BackgroundService
     {
         private readonly string _portName = "/dev/ttyACM0";
         private readonly int _baudRate = 9600;
 
         private SerialPort? _serialPort;
-        private readonly ILogger<ArduinoService> _logger;
+        private readonly ILogger<ArduinoDataService> _logger;
 
-        public ArduinoService(ILogger<ArduinoService> logger)
+        public ArduinoDataService(ILogger<ArduinoDataService> logger)
         {
             _logger = logger;
         }
@@ -56,7 +56,7 @@ namespace PiGrow.Services
                 }
                 catch (TimeoutException)
                 {
-                    // nothing received -> just continue
+                    _logger.LogInformation("Serial read timeout."); 
                 }
                 catch (Exception ex)
                 {

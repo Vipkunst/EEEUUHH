@@ -10,11 +10,12 @@ builder.Logging.AddDebug();
 
 builder.Services.AddSingleton<ILogger>(sp =>
     sp.GetRequiredService<ILoggerFactory>().CreateLogger("Default"));
+builder.Services.AddSingleton<PiGrow.Services.IPiRelayController, PiGrow.Services.PiRelayService>();
 
 builder.Services.AddMemoryCache();
 builder.Services.AddHostedService<PiGrow.Services.MqttClientService>();
 builder.Services.AddHostedService<PiGrow.Services.ConditionCheckerService>();
-builder.Services.AddHostedService<PiGrow.Services.ArduinoService>();
+//builder.Services.AddHostedService<PiGrow.Services.ArduinoDataService>();
 
 var app = builder.Build();
 

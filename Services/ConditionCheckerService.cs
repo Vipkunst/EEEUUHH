@@ -7,15 +7,17 @@ namespace PiGrow.Services
         private readonly IMemoryCache _data;
         private readonly ILogger<ConditionCheckerService> _logger;
         private readonly IPiRelayController _relayController;
+        private readonly IConfiguration _config;
 
         private readonly bool _runStartupTest = true;
-        private readonly TimeSpan _testPulseDuration = TimeSpan.FromSeconds(10);
+        private readonly TimeSpan _testPulseDuration = TimeSpan.FromSeconds(_config.GetValue("Relay:MinOnSeconds", 5));
 
-        public ConditionCheckerService(IMemoryCache data, ILogger<ConditionCheckerService> logger, IPiRelayController relayService)
+        public ConditionCheckerService(IMemoryCache data, ILogger<ConditionCheckerService> logger, IPiRelayController relayService, IConfiguration config)
         {
             _data = data;
             _logger = logger;
             _relayController = relayService;
+            _config = config;
         }
 
         double humidityThreshold = 50;

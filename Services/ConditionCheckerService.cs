@@ -114,9 +114,9 @@ namespace PiGrow.Services
                         while (shouldWater)
                         {
                             await _relayController.SetStateAsync(true, stoppingToken);
-                            //water 30s
-                            await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
+                            await Task.Delay(TimeSpan.FromSeconds(1), stoppingToken);
                             await _relayController.SetStateAsync(false, stoppingToken);
+                            await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
                             shouldWater = EvaluateCondition(SoilHumidityTopic, _soilHumidityThreshold, currentlyActive: true);
                         }
                     }

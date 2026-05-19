@@ -64,8 +64,12 @@ namespace PiGrow.Services
             _lightThreshold = LoadThreshold(config, "LightThreshold", 20.0, 100.0);
 
             _timeBetweenWatering = TimeSpan.FromSeconds(config.GetValue("TimeThresholds:TimeBetweenWateringSeconds", 3600));
+            #if DEBUG
             // Allow watering to start immediately on first eligible reading after startup.
-            _lastTimeWatered = DateTime.UtcNow - _timeBetweenWatering;
+                _lastTimeWatered = DateTime.UtcNow - _timeBetweenWatering;
+            #else
+                _lastTimeWatered = DateTime.UtcNow;
+            #endif
 
             _lightAlertCooldown = TimeSpan.FromSeconds(config.GetValue("TimeThresholds:LightAlertCooldownSeconds", 21600));
             _lastLightAlert = DateTime.UtcNow - _lightAlertCooldown;
